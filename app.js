@@ -17,8 +17,8 @@ app.use(express.urlencoded({extended:true}))
 const dbURI = process.env.DBURI
 mongoose.connect(dbURI,{useNewUrlParser: true, useUnifiedTopology: true})
 .then((result)=>{
-    app.listen(3000,()=>{
-        console.log('Listnening at port 3000')
+    app.listen(process.env.PORT,()=>{
+        console.log(`Listnening at port ${process.env.PORT}`)
     })
 }).catch(err =>{console.log(err)})
 
