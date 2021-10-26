@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const api_routes = require('./routes/api_routes')
 const rateLimit = require('express-rate-limit')
+const dotenv = require('dotenv').config()
 const app = express()
 app.set('trust proxy', 1);
 const apilimiter = rateLimit({
@@ -13,7 +14,7 @@ const apilimiter = rateLimit({
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-const dbURI = 'mongodb+srv://sourav:9937382009@cluster0.uutd9.mongodb.net/hackUMBC'
+const dbURI = process.env.DBURI
 mongoose.connect(dbURI,{useNewUrlParser: true, useUnifiedTopology: true})
 .then((result)=>{
     app.listen(3000,()=>{
