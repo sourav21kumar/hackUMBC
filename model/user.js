@@ -10,7 +10,10 @@ const userSchema = new mongoose.Schema({
         type:Number,
         required:[true,'Tempreture is Required']
     },
-    
+    createdAt:{
+        type:Date,
+        default:Date.now(),
+    }
 })
 
 const User = mongoose.model('user',userSchema)
